@@ -26,4 +26,4 @@ jobs:
           SURGE_EMAIL: ${{ secrets.SURGE_EMAIL }}
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
         run: |
-          surge ./ https://melodic-cough.surge.sh --token $SURGE_TOKEN
+          surge ./ https://maxverstappenfans.surge.sh --token $SURGE_TOKEN
