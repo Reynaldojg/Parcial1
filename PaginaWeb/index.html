@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Max Verstappen - Fan Page</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Max Verstappen</h1>
+      <p>El Rey de la Velocidad - 3 veces campeón del mundo de Fórmula 1 🏆</p>
+    </div>
+  </header>
+
+  <section class="bio section">
+    <h2>Biografía</h2>
+    <p>
+      Max Emilian Verstappen, nacido el 30 de septiembre de 1997 en Bélgica, es un piloto neerlandés de Fórmula 1 
+      que compite para Red Bull Racing. Conocido por su agresividad, talento natural y precisión al volante, 
+      se convirtió en el campeón mundial más joven en la historia de la F1.
+    </p>
+  </section>
+
+  <section class="gallery section">
+    <h2>Galería de Momentos</h2>
+    <div class="gallery-grid">
+      <div class="photo" data-desc="Max celebrando su primer campeonato en 2021">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Max_Verstappen_2021.jpg" alt="Max campeón 2021">
+      </div>
+      <div class="photo" data-desc="En acción durante el GP de Mónaco">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Max_Verstappen_2018_-_Red_Bull_RB14.jpg" alt="Max en Mónaco">
+      </div>
+      <div class="photo" data-desc="Podio tras una victoria dominante en Austria">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Max_Verstappen_Red_Bull_Ring_2022.jpg" alt="Podio en Austria">
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Fan Page de Max Verstappen | Sitio educativo</p>
+  </footer>
+
+    <!-- Ventana emergente (modal) oculta -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span id="closeModal" class="close">&times;</span>
+      <img id="modalImg" src="" alt="">
+      <p id="modalDesc"></p>
+    </div>
+  </div>
+
+  <script>
+    // Seleccionamos elementos
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modalImg');
+    const modalDesc = document.getElementById('modalDesc');
+    const closeModal = document.getElementById('closeModal');
+
+    // Cuando se hace clic en una foto
+    document.querySelectorAll('.photo img').forEach(img => {
+      img.addEventListener('click', () => {
+        modal.style.display = 'flex';
+        modalImg.src = img.src;
+        modalDesc.textContent = img.parentElement.dataset.desc;
+      });
+    });
+
+    // Cerrar al hacer clic en la “X”
+    closeModal.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    // Cerrar al hacer clic fuera del modal
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
