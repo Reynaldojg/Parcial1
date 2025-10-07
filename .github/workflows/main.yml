@@ -1,0 +1,29 @@
+name: Despliegue automático a Surge.sh
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Obtener código del repositorio
+        uses: actions/checkout@v4
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Instalar Surge
+        run: npm install --global surge
+
+      - name: Desplegar sitio en Surge
+        env:
+          SURGE_EMAIL: ${{ secrets.SURGE_EMAIL }}
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+        run: |
+          surge ./ https://melodic-cough.surge.sh --token $SURGE_TOKEN
